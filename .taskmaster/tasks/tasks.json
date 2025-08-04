@@ -1,0 +1,141 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Develop Core Application Shell and Markdown-Native Data Storage",
+        "description": "Create the basic application structure for a single desktop platform (e.g., Electron) and implement the core logic for creating, reading, and saving all user data as local markdown files.",
+        "details": "This task addresses PRD-F2 (Markdown-native data storage) and partially PRD-F1 (Cross-platform support) by establishing the foundational architecture. All subsequent features will build upon this local-first data layer.",
+        "testStrategy": "Verify that the application can create a new note, save it as a .md file, close the app, reopen it, and load the note correctly. Confirm the file content is human-readable markdown.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement Voice and Text Command Input",
+        "description": "Integrate voice-to-text transcription services (e.g., Apple Speech, Google Speech-to-Text) and a text input interface for command processing on the initial desktop platform.",
+        "details": "This task implements PRD-F3. The goal is to achieve >90% transcription accuracy with latency under 1 second, as per PRD-N3. This focuses on capturing input; command parsing will be handled by other tasks.",
+        "testStrategy": "Speak 50 distinct commands and verify transcription accuracy is over 90%. Test text input via the main UI. Measure latency from the end of speech to the appearance of transcribed text.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Build UI for Task and Note Management",
+        "description": "Create the user interface for viewing, creating, and editing tasks and notes. This includes the main dashboard list, the detail screen with a markdown editor, and basic tagging functionality.",
+        "details": "This task implements user stories US-TS1 and US-TS2. It should follow the 'Main Dashboard' and 'Task/Note Detail Screen' wireframes, including a markdown editor with a live preview toggle.",
+        "testStrategy": "A user must be able to create a new task, open it, edit its content using the markdown editor, add/remove tags, and see the changes saved to the underlying markdown file.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Implement Persistent Memory and Cross-Device Sync",
+        "description": "Develop the system for maintaining conversation history and context across sessions. Implement a sync mechanism (e.g., using iCloud, OneDrive) to keep data consistent across multiple devices.",
+        "details": "This task addresses PRD-F7, US-SYNC1, and US-SYNC2. The context must be preserved for at least 7 days and sync in near real-time.",
+        "testStrategy": "Create a note on one device and verify it appears on a second device within 5 seconds. Start a conversation, close the app, reopen, and confirm the assistant remembers the context.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Implement End-to-End Encryption and Privacy Controls",
+        "description": "Integrate E2EE for all user data, especially when synced to the cloud. Ensure all data remains local by default, with explicit user consent required for any cloud sync or data sharing.",
+        "details": "This task directly implements non-functional requirements PRD-N1 (Security) and PRD-N2 (Privacy). It is a critical task for user trust and data integrity.",
+        "testStrategy": "Perform a security audit to confirm data at rest (local files) and in transit (syncing) is encrypted. Verify that cloud sync is disabled by default and requires an explicit user opt-in.",
+        "priority": "high",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Develop Automation Engine and Service Integration Framework",
+        "description": "Build the core engine for running workflows. Implement the initial framework for connecting to external services like email and calendar via OAuth 2.0.",
+        "details": "This is the foundational backend work for PRD-F4 (Workflow automation). It involves creating the data structures for workflows (triggers, conditions, actions) and handling authentication with third-party APIs.",
+        "testStrategy": "Successfully authenticate with a test Google Calendar account and a Microsoft Outlook account. Execute a hardcoded workflow to verify the engine works.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Create Automation Workflow Setup UI",
+        "description": "Design and build the user interface for creating, editing, and managing automation workflows, as described in the wireframes, including a drag-and-drop editor.",
+        "details": "This task implements the 'Automation Workflow Setup' wireframe and user story US-WF2. Users should be able to visually construct a workflow by connecting triggers and actions.",
+        "testStrategy": "A user must be able to open the workflow editor, drag a trigger and an action, connect them, save the workflow, and successfully execute it using the 'Test' button.",
+        "priority": "medium",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement Smart Task Management and Contextual Reminders",
+        "description": "Integrate an AI model to provide intelligent, context-aware reminders and notifications based on natural language and user context (time, location).",
+        "details": "This task addresses PRD-F5 and US-TS3. It requires integrating an LLM to parse natural language from tasks to schedule notifications appropriately.",
+        "testStrategy": "Create a task: 'Remind me to call support tomorrow at 10 am'. Verify a notification is scheduled and triggers at the correct time. Test snooze and dismiss functionality.",
+        "priority": "high",
+        "dependencies": [
+          3,
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Port Application to Mobile and Watch Platforms",
+        "description": "Develop native clients for iOS, watchOS, and Android, ensuring feature parity for core functionalities like voice input, task viewing, and sync.",
+        "details": "This task fulfills the main requirement of PRD-F1 (Cross-platform support). It involves creating separate native frontends that connect to the common sync and data layer established in other tasks.",
+        "testStrategy": "Install and run the app on target devices for each platform. Verify voice capture, task list display, and data sync work correctly and consistently with the desktop version.",
+        "priority": "high",
+        "dependencies": [
+          4,
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Implement Messaging Integration",
+        "description": "Integrate with native messaging platforms (e.g., SMS) to allow users to read and reply to messages directly within JarviSuite. Archive conversation history as markdown.",
+        "details": "This task implements PRD-F6, US-MSG1, and US-MSG2. It will require platform-specific APIs and explicit user permissions. The 'Messages Screen' wireframe provides the UI design.",
+        "testStrategy": "Grant the app messaging permissions. Verify that incoming messages appear in the app. Send a reply from within the app and confirm it is received. Check that the conversation is saved as a markdown file.",
+        "priority": "medium",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-08-04T02:31:14.492Z",
+      "updated": "2025-08-04T02:31:14.492Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
