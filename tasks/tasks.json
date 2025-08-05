@@ -1,0 +1,454 @@
+{
+  "project": "JarviSuite Web App",
+  "version": "1.0.0",
+  "tasks": [
+    {
+      "id": "AUTH-001",
+      "title": "Set up Next.js project with TypeScript",
+      "description": "Initialize Next.js project with TypeScript, Tailwind CSS, and basic project structure",
+      "priority": "high",
+      "category": "setup",
+      "status": "pending",
+      "estimated_hours": 2,
+      "dependencies": [],
+      "acceptance_criteria": [
+        "Next.js 14+ with App Router",
+        "TypeScript configuration",
+        "Tailwind CSS setup",
+        "Basic folder structure (components, lib, types)"
+      ]
+    },
+    {
+      "id": "AUTH-002",
+      "title": "Implement OAuth2.0 authentication",
+      "description": "Set up OAuth2.0 with Google and Apple sign-in using NextAuth.js",
+      "priority": "high",
+      "category": "authentication",
+      "status": "pending",
+      "estimated_hours": 4,
+      "dependencies": ["AUTH-001"],
+      "acceptance_criteria": [
+        "NextAuth.js configuration",
+        "Google OAuth provider setup",
+        "Apple OAuth provider setup",
+        "Protected route middleware",
+        "User session management"
+      ]
+    },
+    {
+      "id": "AUTH-003",
+      "title": "Create onboarding flow",
+      "description": "Build initial onboarding flow to set up user preferences and connect services",
+      "priority": "medium",
+      "category": "authentication",
+      "status": "pending",
+      "estimated_hours": 6,
+      "dependencies": ["AUTH-002"],
+      "acceptance_criteria": [
+        "Multi-step onboarding wizard",
+        "Service connection setup (email, calendar)",
+        "Preference configuration",
+        "Progress tracking"
+      ]
+    },
+    {
+      "id": "UI-001",
+      "title": "Design system setup with Shadcn UI",
+      "description": "Set up Shadcn UI components and create design system foundation",
+      "priority": "high",
+      "category": "ui",
+      "status": "pending",
+      "estimated_hours": 3,
+      "dependencies": ["AUTH-001"],
+      "acceptance_criteria": [
+        "Shadcn UI installation",
+        "Custom theme configuration",
+        "Component library setup",
+        "Design tokens defined"
+      ]
+    },
+    {
+      "id": "UI-002",
+      "title": "Create responsive layout components",
+      "description": "Build header, footer, and main layout components with navigation",
+      "priority": "high",
+      "category": "ui",
+      "status": "pending",
+      "estimated_hours": 4,
+      "dependencies": ["UI-001"],
+      "acceptance_criteria": [
+        "Responsive header with search bar",
+        "Footer navigation tabs",
+        "Mobile-friendly layout",
+        "Voice command mic button"
+      ]
+    },
+    {
+      "id": "DASH-001",
+      "title": "Build main dashboard page",
+      "description": "Create the main dashboard with task/note list and floating action button",
+      "priority": "high",
+      "category": "dashboard",
+      "status": "pending",
+      "estimated_hours": 5,
+      "dependencies": ["UI-002", "AUTH-002"],
+      "acceptance_criteria": [
+        "Dashboard route at /dashboard",
+        "Markdown-rendered task list",
+        "Grouped by tags/creation date",
+        "Floating action button",
+        "Search functionality"
+      ]
+    },
+    {
+      "id": "EDITOR-001",
+      "title": "Implement markdown editor component",
+      "description": "Create rich markdown editor with live preview and formatting toolbar",
+      "priority": "high",
+      "category": "editor",
+      "status": "pending",
+      "estimated_hours": 8,
+      "dependencies": ["UI-001"],
+      "acceptance_criteria": [
+        "Rich markdown editor (react-markdown)",
+        "Live preview toggle",
+        "Formatting toolbar (headings, bold, italics, checkboxes)",
+        "Autosave functionality",
+        "Metadata sidebar for tags and reminders"
+      ]
+    },
+    {
+      "id": "EDITOR-002",
+      "title": "Create editor page with routing",
+      "description": "Build editor page at /editor/[id] with note/task editing capabilities",
+      "priority": "medium",
+      "category": "editor",
+      "status": "pending",
+      "estimated_hours": 4,
+      "dependencies": ["EDITOR-001", "DASH-001"],
+      "acceptance_criteria": [
+        "Dynamic routing for editor",
+        "Note/task loading and saving",
+        "AI-generated suggestions sidebar",
+        "Cross-tab sync"
+      ]
+    },
+    {
+      "id": "TASKS-001",
+      "title": "Build task management system",
+      "description": "Create smart task manager with priority, context, and due date grouping",
+      "priority": "high",
+      "category": "tasks",
+      "status": "pending",
+      "estimated_hours": 6,
+      "dependencies": ["EDITOR-001"],
+      "acceptance_criteria": [
+        "Task list view with grouping options",
+        "Add/edit task functionality",
+        "Context-aware reminder options",
+        "Priority tags and categorization",
+        "Snooze, dismiss, complete actions"
+      ]
+    },
+    {
+      "id": "TASKS-002",
+      "title": "Create tasks page",
+      "description": "Build dedicated tasks page at /tasks with advanced filtering",
+      "priority": "medium",
+      "category": "tasks",
+      "status": "pending",
+      "estimated_hours": 3,
+      "dependencies": ["TASKS-001"],
+      "acceptance_criteria": [
+        "Tasks route at /tasks",
+        "Advanced filtering and sorting",
+        "Bulk actions",
+        "Task statistics"
+      ]
+    },
+    {
+      "id": "VOICE-001",
+      "title": "Implement voice command interface",
+      "description": "Set up Web Speech API for voice input and natural language parsing",
+      "priority": "medium",
+      "category": "voice",
+      "status": "pending",
+      "estimated_hours": 6,
+      "dependencies": ["UI-002"],
+      "acceptance_criteria": [
+        "Global mic trigger",
+        "Real-time transcription",
+        "Natural language command parsing",
+        "Fallback to text input",
+        "Command examples: 'Remind me to call John at 4 PM'"
+      ]
+    },
+    {
+      "id": "AUTO-001",
+      "title": "Create automation service connections",
+      "description": "Set up API integrations for Gmail, Outlook, Calendar, and browser automation",
+      "priority": "medium",
+      "category": "automation",
+      "status": "pending",
+      "estimated_hours": 8,
+      "dependencies": ["AUTH-002"],
+      "acceptance_criteria": [
+        "Gmail API integration",
+        "Outlook API integration",
+        "Calendar API integration",
+        "Browser automation setup",
+        "OAuth scopes configuration"
+      ]
+    },
+    {
+      "id": "AUTO-002",
+      "title": "Build visual workflow builder",
+      "description": "Create drag-and-drop workflow builder with trigger > condition > action pattern",
+      "priority": "medium",
+      "category": "automation",
+      "status": "pending",
+      "estimated_hours": 10,
+      "dependencies": ["AUTO-001", "UI-001"],
+      "acceptance_criteria": [
+        "Visual drag-and-drop interface",
+        "Trigger > Condition > Action workflow pattern",
+        "Markdown preview of workflows",
+        "Enable/disable workflow controls",
+        "Workflow execution logs"
+      ]
+    },
+    {
+      "id": "AUTO-003",
+      "title": "Create automation page",
+      "description": "Build automation page at /automation with workflow management",
+      "priority": "low",
+      "category": "automation",
+      "status": "pending",
+      "estimated_hours": 4,
+      "dependencies": ["AUTO-002"],
+      "acceptance_criteria": [
+        "Automation route at /automation",
+        "Workflow list view",
+        "Execution history",
+        "Success rate metrics"
+      ]
+    },
+    {
+      "id": "MSG-001",
+      "title": "Build messaging interface",
+      "description": "Create messaging system with contact list and markdown-based chat",
+      "priority": "medium",
+      "category": "messaging",
+      "status": "pending",
+      "estimated_hours": 8,
+      "dependencies": ["EDITOR-001"],
+      "acceptance_criteria": [
+        "Contact list with unread indicators",
+        "Markdown-based chat view",
+        "Voice input for messages",
+        "Quick reply functionality",
+        "Message history"
+      ]
+    },
+    {
+      "id": "MSG-002",
+      "title": "Create messages page",
+      "description": "Build messages page at /messages with full messaging functionality",
+      "priority": "low",
+      "category": "messaging",
+      "status": "pending",
+      "estimated_hours": 3,
+      "dependencies": ["MSG-001"],
+      "acceptance_criteria": [
+        "Messages route at /messages",
+        "Contact management",
+        "Message search",
+        "Voice message support"
+      ]
+    },
+    {
+      "id": "MEMORY-001",
+      "title": "Implement persistent memory system",
+      "description": "Create session memory and historical context storage using markdown files",
+      "priority": "medium",
+      "category": "memory",
+      "status": "pending",
+      "estimated_hours": 6,
+      "dependencies": ["EDITOR-001"],
+      "acceptance_criteria": [
+        "Session memory management",
+        "Historical context storage",
+        "Markdown file storage",
+        "Memory retrieval system",
+        "Context-aware suggestions"
+      ]
+    },
+    {
+      "id": "SYNC-001",
+      "title": "Set up cross-platform sync",
+      "description": "Implement real-time sync using WebSockets and background sync with Service Workers",
+      "priority": "medium",
+      "category": "sync",
+      "status": "pending",
+      "estimated_hours": 8,
+      "dependencies": ["MEMORY-001"],
+      "acceptance_criteria": [
+        "WebSocket connection for real-time sync",
+        "Service Worker for offline capture",
+        "Conflict resolution based on timestamps",
+        "Background sync functionality",
+        "Sync status indicators"
+      ]
+    },
+    {
+      "id": "SYNC-002",
+      "title": "Implement cloud storage sync",
+      "description": "Add iCloud/OneDrive API integration for cross-device synchronization",
+      "priority": "low",
+      "category": "sync",
+      "status": "pending",
+      "estimated_hours": 6,
+      "dependencies": ["SYNC-001"],
+      "acceptance_criteria": [
+        "iCloud API integration",
+        "OneDrive API integration",
+        "Optional sync toggle",
+        "Data export/import functionality"
+      ]
+    },
+    {
+      "id": "SETTINGS-001",
+      "title": "Build settings and preferences page",
+      "description": "Create comprehensive settings page with account management and privacy controls",
+      "priority": "medium",
+      "category": "settings",
+      "status": "pending",
+      "estimated_hours": 5,
+      "dependencies": ["AUTH-002"],
+      "acceptance_criteria": [
+        "Settings route at /settings",
+        "Connected accounts management",
+        "Voice settings configuration",
+        "Data management (export, delete)",
+        "Privacy controls (local-only storage)"
+      ]
+    },
+    {
+      "id": "PERF-001",
+      "title": "Optimize performance and loading",
+      "description": "Implement performance optimizations for sub-2s load times and responsive design",
+      "priority": "high",
+      "category": "performance",
+      "status": "pending",
+      "estimated_hours": 4,
+      "dependencies": ["DASH-001"],
+      "acceptance_criteria": [
+        "App loads in < 2 seconds",
+        "Responsive across all breakpoints",
+        "Image optimization",
+        "Code splitting",
+        "Lazy loading implementation"
+      ]
+    },
+    {
+      "id": "SEC-001",
+      "title": "Implement security measures",
+      "description": "Add end-to-end encryption and secure OAuth flows",
+      "priority": "high",
+      "category": "security",
+      "status": "pending",
+      "estimated_hours": 6,
+      "dependencies": ["AUTH-002"],
+      "acceptance_criteria": [
+        "End-to-end encryption",
+        "Secure OAuth flows",
+        "Data encryption at rest",
+        "CSRF protection",
+        "Input validation"
+      ]
+    },
+    {
+      "id": "OFFLINE-001",
+      "title": "Add offline support",
+      "description": "Implement Service Workers for offline functionality and data caching",
+      "priority": "medium",
+      "category": "offline",
+      "status": "pending",
+      "estimated_hours": 5,
+      "dependencies": ["PERF-001"],
+      "acceptance_criteria": [
+        "Service Worker implementation",
+        "Offline data capture",
+        "Cache recent notes/tasks",
+        "Offline indicator",
+        "Sync when online"
+      ]
+    },
+    {
+      "id": "TEST-001",
+      "title": "Set up testing framework",
+      "description": "Configure Jest, React Testing Library, and E2E testing with Playwright",
+      "priority": "medium",
+      "category": "testing",
+      "status": "pending",
+      "estimated_hours": 4,
+      "dependencies": ["AUTH-001"],
+      "acceptance_criteria": [
+        "Jest configuration",
+        "React Testing Library setup",
+        "Playwright E2E tests",
+        "Test coverage reporting",
+        "CI/CD integration"
+      ]
+    },
+    {
+      "id": "DEPLOY-001",
+      "title": "Set up deployment pipeline",
+      "description": "Configure deployment to Vercel with environment variables and monitoring",
+      "priority": "medium",
+      "category": "deployment",
+      "status": "pending",
+      "estimated_hours": 3,
+      "dependencies": ["TEST-001"],
+      "acceptance_criteria": [
+        "Vercel deployment configuration",
+        "Environment variables setup",
+        "Monitoring and analytics",
+        "Error tracking",
+        "Performance monitoring"
+      ]
+    }
+  ],
+  "categories": {
+    "setup": "Project initialization and configuration",
+    "authentication": "User authentication and authorization",
+    "ui": "User interface components and design system",
+    "dashboard": "Main dashboard and navigation",
+    "editor": "Markdown editor and note-taking",
+    "tasks": "Task management system",
+    "voice": "Voice command and speech recognition",
+    "automation": "Workflow automation and integrations",
+    "messaging": "Messaging and communication",
+    "memory": "Persistent memory and context",
+    "sync": "Cross-platform synchronization",
+    "settings": "User preferences and configuration",
+    "performance": "Performance optimization",
+    "security": "Security and encryption",
+    "offline": "Offline functionality",
+    "testing": "Testing framework and coverage",
+    "deployment": "Deployment and monitoring"
+  },
+  "priorities": {
+    "high": "Critical for MVP launch",
+    "medium": "Important for full functionality",
+    "low": "Nice to have features"
+  },
+  "statuses": {
+    "pending": "Task not yet started",
+    "in_progress": "Task currently being worked on",
+    "review": "Task completed, awaiting review",
+    "completed": "Task finished and approved",
+    "blocked": "Task blocked by dependencies or issues",
+    "cancelled": "Task cancelled or no longer needed"
+  }
+}
