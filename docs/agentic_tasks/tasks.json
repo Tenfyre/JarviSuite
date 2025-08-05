@@ -8,7 +8,7 @@
       "description": "Initialize Next.js project with TypeScript, Tailwind CSS, and basic project structure",
       "priority": "high",
       "category": "setup",
-      "status": "pending",
+      "status": "completed",
       "estimated_hours": 2,
       "dependencies": [],
       "acceptance_criteria": [
